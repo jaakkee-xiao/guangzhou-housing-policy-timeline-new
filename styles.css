@@ -1,0 +1,909 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 根变量定义 */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --accent-color: #3b82f6;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --danger-color: #ef4444;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-light: #9ca3af;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb;
+    --bg-accent: #f3f4f6;
+    --border-color: #e5e7eb;
+    --border-light: #f3f4f6;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+/* 基础样式 */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    font-size: 16px;
+}
+
+/* 容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    background: var(--bg-primary);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+}
+
+/* 页面头部 */
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+    position: relative;
+}
+
+.main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.header-description {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.header-description p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* 时间线容器 */
+.timeline-container {
+    position: relative;
+    margin-bottom: 4rem;
+}
+
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+/* 时间线主轴 */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 2rem;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--accent-color), var(--success-color));
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+}
+
+/* 时间线项目 */
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 4rem;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+/* 时间线标记 */
+.timeline-marker {
+    position: absolute;
+    left: -2rem;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.timeline-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.timeline-dot::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-dot {
+    transform: scale(1.2);
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.15);
+}
+
+.timeline-item:hover .timeline-dot::before {
+    background: var(--accent-color);
+}
+
+.timeline-year {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: var(--bg-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    border: 2px solid var(--primary-color);
+    white-space: nowrap;
+    box-shadow: var(--shadow-sm);
+}
+
+/* 时间线内容 */
+.timeline-content {
+    position: relative;
+}
+
+.timeline-card {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.timeline-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.timeline-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.timeline-card:hover::before {
+    opacity: 1;
+}
+
+/* 卡片头部 */
+.card-header {
+    margin-bottom: 1.5rem;
+}
+
+.stage-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.stage-keywords {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.keyword {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.keyword:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* 时间线事件 */
+.timeline-events {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.timeline-event {
+    padding: 1.5rem;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.timeline-event:hover {
+    background: var(--bg-accent);
+    border-left-color: var(--primary-color);
+    transform: translateX(4px);
+}
+
+.event-date {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    background: rgba(37, 99, 235, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 8px;
+    display: inline-block;
+    margin-bottom: 0.75rem;
+}
+
+.event-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.event-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+}
+
+.event-description strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.event-source {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    font-style: italic;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-light);
+}
+
+/* 各区特点部分 */
+.districts-section {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 2px solid var(--border-light);
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-primary);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+.districts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.district-card {
+    background: var(--bg-primary);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.district-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-secondary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.district-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.district-card:hover::before {
+    transform: scaleX(1);
+}
+
+.district-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.district-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* 页面底部 */
+.footer {
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 2px solid var(--border-light);
+    background: var(--bg-secondary);
+    border-radius: 12px;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-note {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-note strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+        border-radius: 16px;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.125rem;
+    }
+
+    .header-description p {
+        font-size: 1rem;
+    }
+
+    .timeline {
+        padding-left: 1rem;
+    }
+
+    .timeline::before {
+        left: 1rem;
+    }
+
+    .timeline-item {
+        padding-left: 3rem;
+    }
+
+    .timeline-marker {
+        left: -1.5rem;
+    }
+
+    .timeline-card {
+        padding: 1.5rem;
+    }
+
+    .stage-title {
+        font-size: 1.25rem;
+    }
+
+    .stage-keywords {
+        gap: 0.375rem;
+    }
+
+    .keyword {
+        font-size: 0.8125rem;
+        padding: 0.25rem 0.625rem;
+    }
+
+    .timeline-event {
+        padding: 1.25rem;
+    }
+
+    .event-title {
+        font-size: 1rem;
+    }
+
+    .districts-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .district-card {
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 0.5rem;
+        padding: 1rem;
+    }
+
+    .main-title {
+        font-size: 1.75rem;
+    }
+
+    .timeline-card {
+        padding: 1rem;
+    }
+
+    .timeline-event {
+        padding: 1rem;
+    }
+
+    .district-card {
+        padding: 1.25rem;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.timeline-item {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.timeline-item:nth-child(1) { animation-delay: 0.1s; }
+.timeline-item:nth-child(2) { animation-delay: 0.2s; }
+.timeline-item:nth-child(3) { animation-delay: 0.3s; }
+.timeline-item:nth-child(4) { animation-delay: 0.4s; }
+.timeline-item:nth-child(5) { animation-delay: 0.5s; }
+.timeline-item:nth-child(6) { animation-delay: 0.6s; }
+.timeline-item:nth-child(7) { animation-delay: 0.7s; }
+.timeline-item:nth-child(8) { animation-delay: 0.8s; }
+
+.district-card {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.district-card:nth-child(1) { animation-delay: 0.9s; }
+.district-card:nth-child(2) { animation-delay: 1.0s; }
+.district-card:nth-child(3) { animation-delay: 1.1s; }
+.district-card:nth-child(4) { animation-delay: 1.2s; }
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* 选择文本样式 */
+::selection {
+    background: rgba(37, 99, 235, 0.2);
+    color: var(--text-primary);
+}
+
+/* 焦点样式 */
+*:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* AI模型内容区分样式 */
+.ai-models-note {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: rgba(37, 99, 235, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.ai-models-note p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* 内容导航样式 */
+.content-nav {
+    margin: 2rem 0;
+    padding: 1rem 0;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 25px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    min-width: 150px;
+}
+
+.nav-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.nav-btn.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+/* AI内容区域样式 */
+.ai-content-section {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.ai-content-section.active {
+    display: block;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem 0;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+    border-radius: 12px;
+    border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.ai-model-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.ai-model-description {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 400;
+}
+
+/* 阶段总结样式 */
+.stages-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.stage-summary-card {
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.stage-summary-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
+}
+
+.stage-summary-card h3 {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.stage-summary-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* 验证说明样式 */
+.verification-section {
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+.verification-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.verification-card {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.verification-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--success-color);
+}
+
+.verification-card h3 {
+    color: var(--success-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.verification-card h3::before {
+    content: "✓";
+    background: var(--success-color);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.verification-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 阶段核心信息总结表格样式 */
+.summary-table-section {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--bg-secondary);
+    border-radius: 16px;
+    border: 1px solid var(--border-light);
+}
+
+.table-container {
+    overflow-x: auto;
+    border-radius: 12px;
+    box-shadow: var(--shadow-md);
+    background: var(--bg-primary);
+}
+
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.summary-table thead {
+    background: var(--gradient-primary);
+    color: white;
+}
+
+.summary-table th {
+    padding: 1rem 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 0.025em;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.summary-table td {
+    padding: 1rem 0.75rem;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: top;
+}
+
+.summary-table tbody tr:hover {
+    background: var(--bg-accent);
+    transition: background-color 0.2s ease;
+}
+
+.summary-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* 表格列宽度控制 */
+.summary-table th:nth-child(1),
+.summary-table td:nth-child(1) {
+    width: 20%;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.summary-table th:nth-child(2),
+.summary-table td:nth-child(2) {
+    width: 15%;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.summary-table th:nth-child(3),
+.summary-table td:nth-child(3) {
+    width: 40%;
+}
+
+.summary-table th:nth-child(4),
+.summary-table td:nth-child(4) {
+    width: 25%;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .nav-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .ai-model-title {
+        font-size: 1.5rem;
+    }
+    
+    .stages-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .verification-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .summary-table {
+        font-size: 0.8rem;
+    }
+    
+    .summary-table th,
+    .summary-table td {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .summary-table th:nth-child(1),
+    .summary-table td:nth-child(1),
+    .summary-table th:nth-child(2),
+    .summary-table td:nth-child(2),
+    .summary-table th:nth-child(3),
+    .summary-table td:nth-child(3),
+    .summary-table th:nth-child(4),
+    .summary-table td:nth-child(4) {
+        width: auto;
+    }
+}
