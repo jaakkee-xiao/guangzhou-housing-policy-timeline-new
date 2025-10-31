@@ -54,7 +54,7 @@ function findMatchingUrl(sourceText) {
         { key: "敢啃.*硬骨头", url: sourceUrlMap["顶硬上！敢啃城市更新\"硬骨头\""] },
         { key: "房票.*横扫楼市", url: sourceUrlMap["广州房票，横扫楼市"] },
         { key: "房票新政.*黄埔.*知识城", url: sourceUrlMap["房票新政激活黄埔楼市，知识城迎来认购热潮"] },
-        { key: "2024回顾.*前瞻.*城中村", url: sourceUrlMap["2024回顾与前瞻③｜城中村改造与存量房收储释放楼市新机遇"] }
+        { key: "2024回顾.*前瞻.*③", url: sourceUrlMap["2024回顾与前瞻③｜城中村改造与存量房收储释放楼市新机遇"] }
     ];
     
     for (let keyword of keywords) {
